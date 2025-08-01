@@ -1,3 +1,7 @@
+git add .
+git commit -m "Thêm phim mới"
+git push
+
 ảnh 
 idmb quality year current_epsido
 xem ngay tym
