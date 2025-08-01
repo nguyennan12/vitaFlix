@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Tạo movies.json</title>
+</head>
+<body>
+  <h2>Click để lấy danh sách phim</h2>
+  <button id="fetch">Bắt đầu lấy dữ liệu</button>
+  <pre id="log"></pre>
+
+  <script>
+    const log = document.getElementById('log');
+
+    async function fetchMovies() {
+      const slugs = ['han-quoc', 'trung-quoc', 'nhat-ban', 'au-my'];
+      const allMovies = [];
+
+      for (const slug of slugs) {
+        let page = 1;
+        let hasMore = true;
+
+        while (hasMore) {
+          log.textContent += `📥 Đang fetch ${slug} - page ${page}\n`;
+          const res = await fetch(`https://phimapi.com/v1/api/quoc-gia/${slug}?page=${page}`);
+          const data = await res.json();
+          allMovies.push(...data.data.items);
+
+          page++;
+          hasMore = page <= 100; // Lấy 2 trang mỗi quốc gia để nhẹ, có thể tăng
+        }
+      }
+
+      const blob = new Blob([JSON.stringify(allMovies, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'movies.json';
+      a.click();
+      URL.revokeObjectURL(url);
+
+      log.textContent += `✅ Đã tải xong ${allMovies.length} phim`;
+    }
+
+    document.getElementById('fetch').addEventListener('click', fetchMovies);
+  </script>
+</body>
+</html>

@@ -91,30 +91,6 @@ function renderListMovieContinute(movies, titleList) {
   }
 }
 
-function renderListMovieRecommend(movie, titleList) {
-  let html = '';
-  const movieLimited = movie.slice(0, 5);
-  movieLimited.forEach(movie => {
-    html += `
-      <div class="movie-recommend-box">
-        <div class="poster-movie-recommend">
-          <img src="https://phimimg.com/${movie.poster_url}">
-        </div>
-        <div class="info-movie-recommend">
-          <div class="name-movie-recommend">
-            <p>${movie.name}</p>
-            <p>${movie.origin_name}</p>
-          </div>
-          <div>
-            <a href="preview.html">Thông tin phim<i class="fa-solid fa-angle-right"></i></a>
-          </div>
-        </div>
-      </div>
-    `
-  });
-  document.querySelector(titleList)
-    .innerHTML = html;
-};
 
 // Hàm render tất cả
 function renderAllLists() {
@@ -125,7 +101,6 @@ function renderAllLists() {
   renderListMovieSingle(catagorMovie.korea.single, '.js-movie-list-single-korea');
   renderListMovieSingle(catagorMovie.auMy.single, '.js-movie-list-single-auMy');
   renderListMovieContinute(catagorMovie.continute, '.js-movie-list-continute');
-  renderListMovieRecommend(catagorMovie.korea.series, '.js-movie-list-recommend');
 }
 
 //load từ biến moviePromise (không trực tiếp từ loadMoviesFetch)
