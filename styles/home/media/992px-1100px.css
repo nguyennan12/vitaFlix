@@ -1,0 +1,64 @@
+@media (max-width: 1199px) and (min-width: 992px) {
+  .banner {
+    height: 80vh;
+  }
+  
+  .banner .content {
+    max-width: 430px;
+    margin-left: 20px;
+  }
+  
+  .movie-title h2 {
+    font-size: 52px;
+  }
+  
+  .banner .carousel-box {
+    min-width: 500px;
+    right: 60px;
+  }
+  
+  .carousel .carousel-item img {
+    max-width: 160px;
+    transform: translateX(10px) translateY(-80px);
+  }
+  
+  .movie-list {
+    padding: 10px 16px;
+    gap: 12px;
+  }
+  
+  .movie-box {
+    width: 190px;
+    height: 360px;
+  }
+  
+  .content-movie-single {
+    font-size: 70px;
+  }
+
+   .list-movie-single {
+    max-width: 80vw;
+  }
+
+  .movie-continute-box {
+    width: auto;
+    height: 270px;
+  }
+
+  .movie-list.random{
+    padding: 0 40px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+   .movie-list.random .movie-box {
+    height: auto;
+    width: 180px;
+  }
+
+  
+
+  
+}

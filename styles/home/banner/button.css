@@ -1,0 +1,73 @@
+.banner .content .button-display{
+  position: relative;
+  display: flex;
+}
+
+.banner .content .button-play{
+  height: 52px;
+  width: 52px;
+  border-radius: 25px;
+  border: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: 0.15s;
+  cursor: pointer;
+}
+
+.banner .content .button-play:hover{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+
+.banner .content .button-play a{
+   background: linear-gradient(90deg, #97dde8, #ffccf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: 0.15s;
+  font-size: 20px;
+}
+
+
+.banner .content .button-display div{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgb(213, 213, 213);
+  background-color: transparent;
+  border-radius: 24px;
+}
+
+.button-like{
+  margin-left: 20px;
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.banner .content .button-like:hover{
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.banner .content .button-display div a{
+  position: relative;
+  display: inline-block;
+  color: white;
+  font-size: 25px;
+}
+
+.banner .content .button-display div a:hover{
+   background: linear-gradient(90deg, #97dde8, #ffccf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.banner .content .button-display div a:first-child{
+  border-right: 1px solid white;
+  padding-right: 24px;
+}
+

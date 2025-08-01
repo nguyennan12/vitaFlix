@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Poppins:wght@400;500;600&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+
+:root{
+   --gradient-color: linear-gradient(90deg, #97dde8, #ffccf2);
+}
+
+
+body{
+  background: #1f2025;
+  font-family: arial;
+
+}
+

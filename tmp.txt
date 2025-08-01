@@ -1,0 +1,308 @@
+chia 2 hàm load
+sai r lọc theo id đi
+
+
+export async function loadMoviesFetch () {
+  //lấy data ở bộ nhớ cachedMovie ra sử dụng (có thể có or no)
+  const cachedMoviesRaw = localStorage.getItem('cachedMovie');
+  //lấy data ngày thôi
+  const cachedTime = localStorage.getItem('cachedTime');
+
+  const now = Date.now();
+  const oneDay = 1 * 60 * 1000;
+
+  // nếu có data thì lấy data đó ở trong bộ nhớ, nếu ko có thì tạo [] trống
+  const cachedMovies = cachedMoviesRaw ? JSON.parse(cachedMoviesRaw) : [];
+
+  //tạo 1 map lưu các gtri [slug, movie] (movie là đầy đủ các thông tin á)
+  //vd [nguoi-hung-yeu-duoi, {slug:'nguoi-hung..', name: 'Người hùng...}]
+  const cachedMovieMap = new Map(
+    cachedMovies.map(movie => [movie.slug, movie])
+  );
+
+  const needUpdate = !cachedTime || (now - cachedTime > oneDay);
+  if (!needUpdate && cachedMovies.length) {
+    console.log(' cachedMovie còn hạn, dùng lại');
+    return cachedMovies;
+  }
+
+  const allCountrySlug = ['han-quoc', 'trung-quoc', 'nhat-ban', 'au-my'];
+  //tạo 1 bản sao của cachedMovieMap để update sau này
+  const updateMovieMap = new Map(cachedMovieMap);
+
+  for(const slug of allCountrySlug) {
+    let page = 1;
+    let hasMore = true;
+    while(hasMore){
+      console.log(`Đang fetch ${slug} - page ${page}`);
+      const response = await fetch(
+        `https://phimapi.com/v1/api/quoc-gia/${slug}?page=${page}`
+        
+      );
+      const movieData = await response.json();
+ 
+      const items = movieData.data.items;
+      const params = movieData.data.params;
+
+      for(const item of items){
+        //lấy slug từ cái item(phim) lưu vào cached để sd
+        const cached = cachedMovieMap.get(item.slug)
+        // nếu kh item đó trong cachedMovieMap hì sẽ trả về undifine và sẽ thêm vô
+        const isNew = !cached;
+        const isUpdated = cached && item.episode_current !== cached.episode_current;
+
+        if (isNew || isUpdated) {
+          const newMovie = new Movie(item, params);
+          const mergedMovie = cached ? { ...cached, ...newMovie } : newMovie;
+
+          console.log('Cached movie:', cached);
+          console.log('New movie:', newMovie);  
+          console.log('Merged movie:', mergedMovie);
+
+          updateMovieMap.set(item.slug, mergedMovie);
+        } else {
+          // Giữ nguyên bản cũ đầy đủ (có extraInfo)
+          updateMovieMap.set(item.slug, cached);
+        }
+      }
+      hasMore = page < 3//movieData.data.params.pagination.totalPages;
+      page++;
+    }
+  }
+  //upade movie trong map thành movie array
+  const updatedMovies = Array.from(updateMovieMap.values());
+
+  console.log('Sample updated movie:', updatedMovies[0]);
+console.log('Does it have extraInfo?', updatedMovies[0].content ? 'YES' : 'NO');
+
+  localStorage.setItem('cachedMovie', JSON.stringify(updatedMovies));
+  localStorage.setItem('cachedTime', now.toString());
+
+  console.log(`Đã lưu ${updatedMovies.length} phim (có cập nhật nếu cần)`);
+
+  return updatedMovies;
+}
+
+
+Test favMovie
+/*
+export async function testSingleMovie() {
+  const movie = fullMovieList.find(m => m.slug === 'nguoi-hung-yeu-duoi');
+  
+  if (!movie) {
+    console.log('❌ Không tìm thấy phim có slug đó');
+    return;
+  }
+
+  console.log('🔍 Đang fetch thông tin chi tiết...');
+  
+  try {
+    const detail = await extraMovieFetch(movie); // 👈 PHẢI có await
+    
+    if (detail) {
+      console.log('🎬 Thông tin chi tiết lấy được:', detail);
+      console.log('✅ Content:', detail.content);
+      console.log('✅ Quality:', detail.quality);
+      console.log('✅ Category:', detail.category);
+      console.log('✅ Tập hiện tại:', detail.episode_current);
+    } else {
+      console.log('❌ Không lấy được thông tin chi tiết');
+    }
+  } catch (error) {
+    console.log('❌ Lỗi:', error);
+  }
+}
+
+// Chạy test
+testSingleMovie();
+
+// Test danh sách yêu thích
+getMovieFav().then(favList => {
+  console.log('📋 Danh sách phim yêu thích:', favList);
+});
+*/
+
+//load 100 và cập nhật
+export async function loadMoviesFetch() {
+  // Lấy dữ liệu cache
+  const cachedMoviesRaw = localStorage.getItem('cachedMovie');
+  const cachedTime = localStorage.getItem('cachedTime');
+
+  const now = Date.now();
+  const oneDay = 24 * 60 * 60 * 1000;
+
+  // Parse cache nếu có
+  const cachedMovies = cachedMoviesRaw ? JSON.parse(cachedMoviesRaw) : [];
+
+  // Tạo Map để tra cứu nhanh theo slug
+  const cachedMovieMap = new Map(
+    cachedMovies.map(movie => [movie.slug, movie])
+  );
+
+  // Nếu còn thời gian cache thì dùng lại
+  if (cachedMovies.length && cachedTime && (now - cachedTime < oneDay)) {
+    console.log("Dùng cachedMovie (còn hạn)");
+    return cachedMovies;
+  }
+
+  const allCountrySlug = ['han-quoc', 'trung-quoc', 'nhat-ban', 'au-my'];
+  const updatedMovieMap = new Map(cachedMovieMap); // bản sao để cập nhật
+
+  for (const slug of allCountrySlug) {
+    let page = 1;
+    let hasMore = true;
+
+    while (hasMore) {
+      console.log(`Đang fetch ${slug} - page ${page}`);
+      const response = await fetch(
+        `https://phimapi.com/v1/api/quoc-gia/${slug}?page=${page}`
+      );
+      const movieData = await response.json();
+
+      const items = movieData.data.items;
+      const countrySlug = movieData.data.params;
+
+      for (const item of items) {
+        const cached = cachedMovieMap.get(item.slug);
+
+        // Nếu chưa từng có phim này → thêm
+        // Nếu đã có nhưng có số tập mới hơn → thay
+        if (
+          !cached ||
+          item.episode_current !== cached.episode_current
+        ) {
+          const newMovie = new Movie(item, countrySlug);
+          updatedMovieMap.set(item.slug, newMovie);
+        }
+      }
+
+      hasMore = page < 3; // bạn có thể đổi lại thành movieData.data.params.pagination.totalPages
+      page++;
+    }
+  }
+
+  // Convert Map thành Array để lưu cache
+  const updatedMovies = Array.from(updatedMovieMap.values());
+
+  // Lưu lại vào localStorage
+  localStorage.setItem('cachedMovie', JSON.stringify(updatedMovies));
+  localStorage.setItem('cachedTime', now.toString());
+
+  console.log(`Đã lưu ${updatedMovies.length} phim (có cập nhật nếu cần)`);
+
+  return updatedMovies;
+}
+
+
+
+
+export async function loadMoviesFetch() {
+  //lấy dữ liệu từ bộ nhớ đệm 'cachedMovie' đã tạo từ setItem ở dưới
+  const cached = localStorage.getItem('cachedMovie');
+  //lấy thời gian đã lưu trong bộ nhớ đệm 'cachedTime' đã tạo từ setItem ở dưới
+  const cachedTime = localStorage.getItem('cachedTime');
+  
+  const now = Date.now(); // lấy thời gian hiện tại tính bằng mili giây
+  const oneDay = 24 * 60 * 60 * 1000; // 1 ngày tính bằng mili giây
+  //níu thời gian trong cached còn (1day) thì lấy dữ liệu từ cached
+  if(cached && cachedTime && (now - cachedTime < oneDay)){
+    return JSON.parse(cached);
+  }
+  //nếu không còn time thì sẽ lấy data = fetch từ API
+  const allCountrySlug = [
+    'han-quoc',
+    'trung-quoc',
+    'nhat-ban',
+    'au-my'
+  ];
+  /*
+  const favMovieSlug = [
+    'nguoi-hung-yeu-duoi',
+    'nguu-lan-chuc-nu',
+    'khi-cuoc-doi-cho-ban-qua-quy',
+    'rung-khong-tieng',
+    'the-gioi-ma-quai-phan-3'
+  ];
+  const allMovies = [];
+
+  for(const slug of allCountrySlug){
+    let page = 1;
+    let hasMore = true;
+    while(hasMore){
+      console.log(`Đang fetch ${slug} - page ${page}`);
+      const response = await fetch(
+        `https://phimapi.com/v1/api/quoc-gia/${slug}?page=${page}`
+      );
+      const movieData = await response.json();
+
+      const items = movieData.data.items; //lấy dữ liệu ở items
+      const countrySlug = movieData.data.params; //lấy ở params
+
+      const moviePageCurrently = items.map((movieDetail) => {
+
+        return new Movie(movieDetail, countrySlug);
+      });
+      allMovies.push(...moviePageCurrently);
+      hasMore = page < 100//movieData.data.params.pagination.totalPages;
+      page++;
+      }
+  }
+  //tạo bộ nhớ đệm tên là 'cachedMovie' và lưu dữ liệu của allMovies vào đó
+  localStorage.setItem('cachedMovie',JSON.stringify(allMovies));
+  //tạo bộ nhớ đệm tên là 'cachedTime' và lưu thời gian hiện tại vào đó
+  localStorage.setItem('cachedTime', now.toString());
+  console.log('Movies loaded from API');
+  return allMovies; 
+}
+
+
+
+
+async function fetchAllMoviesFromAPI (){
+  const allCountrySlug = [
+    'han-quoc',
+    'trung-quoc',
+    'nhat-ban',
+    'my',
+    'viet-nam'
+  ]
+  const allMovies = [];
+  for(const slug of allCountrySlug){
+  let page = 1;
+  let hasMore = true;
+  while(hasMore){
+    console.log(`📄 Đang fetch ${slug} - page ${page}`);
+    const response = await fetch(
+      `https://phimapi.com/v1/api/quoc-gia/${slug}?page=${page}`
+    );
+    const movieData = await response.json();
+
+    const items = movieData.data.items; //lấy dữ liệu ở items
+    const countrySlug = movieData.data.params; //lấy ở params
+
+    const moviePageCurrently = items.map((movieDetail) => {
+      return new Movie(movieDetail, countrySlug);
+    });
+    allMovies.push(...moviePageCurrently);
+    hasMore = page < 4//movieData.data.params.pagination.totalPages;
+    page++;
+    }
+  }
+  return allMovies;
+}
+
+export async function loadMoviesFetch() {
+  const cached = localStorage.getItem('cachedMovie');
+  const cachedTime = localStorage.getItem('cachedTime');
+  const now = Date.now();
+  const oneDay = 24 * 60 * 60 * 1000; 
+  if(cached && cachedTime && (now - cachedTime < oneDay)){
+    return JSON.parse(cached);
+  }
+  const allMovies = await fetchAllMoviesFromAPI();
+  localStorage.setItem('cachedMovie', JSON.stringify(allMovies));
+  localStorage.setItem('cachedTime', now.toString());
+  console.log('Movies loaded from API');
+  return allMovies;
+}  
+*/

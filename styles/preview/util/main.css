@@ -1,0 +1,10 @@
+@import url("comment.css");
+@import url("recommend.css");
+
+.box-utils{
+  height: auto;
+  max-height: 1500px;
+  width: 100vw;
+  display: flex;
+  background: rgba(27, 27, 27, 0.4);
+}

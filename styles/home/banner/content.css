@@ -1,0 +1,109 @@
+.content-box{
+  margin-left: 40px;
+  margin-top: 30px;
+}
+
+.content{
+  position: relative;
+  max-width: 520px;
+  display: none;
+  visibility: hidden;
+  transform: scale(0);
+  transition: 0.5s;
+}
+
+.movie-title{
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0;
+  
+}
+
+.movie-title h2{
+  font-size: 60px;
+  font-family: Oswald !important;
+  color: rgb(249, 247, 247);
+}
+.movie-title div{
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 500;
+  background: linear-gradient(90deg, #97dde8, #ffccf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 14px;;
+}
+
+.content.active{
+  display: block;
+  visibility: visible;
+  transform: scale(1);
+  transition: 0.3s;
+}
+
+.banner .content .button-info{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 300px;
+}
+
+.banner .content .button-info div{
+  color: white;
+  border: 1px solid rgba(214, 214, 214, 0.6);
+  padding: 3px 9px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.movie-quality{
+  background: linear-gradient(90deg, #97dde8, #ffccf2);
+  color: black !important;
+}
+
+.IMDb-vote{
+  background: linear-gradient(90deg, #97dde8, #ffccf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 500;
+  border: 1px solid #97dde8 !important;
+}
+
+
+.button-genre{
+  display: flex;
+  background-color: transparent;
+  max-width: 400px;
+  gap: 10px;
+}
+
+.button-genre div{
+  color: white;
+  margin-top: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.15s;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.button-genre div:hover{
+   background: linear-gradient(90deg, #97dde8, #ffccf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.banner .content p{
+  color: white;
+  font-weight: 350;
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  margin: 10px 0 20px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}

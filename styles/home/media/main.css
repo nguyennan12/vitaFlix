@@ -1,0 +1,11 @@
+@import url("575px.css");
+@import url("576px-767px.css");
+@import url("768px-991px.css");
+@import url("992px-1100px.css");
+@import url("1200px.css");
+
+/* Desktop/Laptop lớn (1200px+) */
+/* Laptop/Tablet ngang (992px - 1199px) */
+/* iPad/Tablet dọc (768px - 991px) */
+/* Điện thoại lớn/Tablet nhỏ (576px - 767px) */
+/* Điện thoại nhỏ (dưới 576px) */

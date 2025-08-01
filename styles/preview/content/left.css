@@ -1,0 +1,170 @@
+.left-box{
+  position: relative;
+  height:auto;
+  width: 30vw;
+  padding-bottom: 20px;
+  border-right: 1px solid rgb(75, 75, 75);
+  border-bottom: 1px solid rgb(75, 75, 75);
+}
+
+.poster-left-box{
+  position: relative;
+  top: -120px;
+  left: 60px;
+  height: 380px;
+  width: 260px;
+  z-index: 3;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 0 12px rgba(212, 212, 212, 0.5);
+  
+}
+
+.poster-left-box img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.info-left-box{
+  position: relative;
+  bottom: 80px;
+  left: 40px;
+  height: 120px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.info{
+  display: flex;
+  justify-content: space-between;
+}
+
+.info div{
+  height: 28px;
+  width: auto;
+  padding: 6px 10px;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.info div:first-child{
+  background: linear-gradient(90deg, #97dde8, #ffccf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border: 1px solid #97dde8;
+}
+
+.info div:nth-child(2){
+  background: linear-gradient(90deg, #97dde8, #ffccf2);
+  color: black !important;
+  border:1px;
+}
+
+.info div:nth-child(3),
+.info div:last-child{
+  background-color: rgba(100,100,100,0.1);
+  color: rgb(220, 220, 220);
+  border: 1px solid rgb(211, 211, 211);
+}
+
+.button-box{
+  height: 80px;
+  width: 100%;
+  display:flex;
+  justify-content: space-around;
+  transition: 0.15s;
+  align-items: center;
+}
+
+.button-play{
+  height: 60px;
+  width: 60px;
+  background-color: transparent;
+  border-radius: 30px;
+  border: 3px solid #97dde8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(98, 98, 98, 0.5);
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.button-play a i{
+  background: linear-gradient(90deg, #97dde8, #ffccf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  font-size: 20px;
+}
+
+.button-play .see-more-text {
+  opacity: 0;
+  width: 0;
+  transition: all 0.8s ease;
+  overflow: hidden;
+  background: linear-gradient(90deg, #97dde8, #ffccf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Khi hover vào nút: giãn rộng + hiện chữ */
+.button-play:hover {
+  height: 50px;
+  width: 130px; /* mở rộng để chứa chữ */
+  background-color: transparent;
+  justify-content: flex-start;
+  padding-left: 14px;
+  border: 2px solid #8fd3dd;
+}
+
+.button-play:hover .see-more-text {
+  opacity: 1;
+  width: auto;
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.button-like-share{
+  height: 50px;
+  width: 120px;
+  background-color: #8fd3dd;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 25px;
+  background-color: rgba(100,100,100,0.1);
+  
+  border: 1px solid rgb(211, 211, 211);
+}
+
+.button-like-share div{
+  height: 26px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-like-share div:first-child{
+  border-right: 1px solid rgb(211,211,211);
+}
+
+.button-like-share div i{
+  font-size: 22px;
+  color: rgb(220, 220, 220);
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.button-like-share div i:hover{
+  background: linear-gradient(90deg, #97dde8 20%, #ffccf2 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

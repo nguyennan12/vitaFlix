@@ -1,0 +1,103 @@
+.see-more-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 1px solid rgba(240, 240, 240, 0.3);
+  border-radius: 20px;
+  padding: 8px;
+  margin-left: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  gap: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.see-more-button i{
+  background: linear-gradient(90deg, #97dde8, #ffccf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-left: 6px;
+  display: inline-block;
+  transition: 0.15s;
+}
+
+.see-more-button .see-more-text {
+  opacity: 0;
+  width: 0;
+  transition: all 0.8s ease;
+  overflow: hidden;
+  background: linear-gradient(90deg, #97dde8, #ffccf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Khi hover vào nút: giãn rộng + hiện chữ */
+.see-more-button:hover {
+  width: 130px; /* mở rộng để chứa chữ */
+  background-color: transparent;
+  justify-content: flex-start;
+  padding-left: 6px;
+  border: 1px solid #8fd3dd;
+}
+
+.see-more-button:hover .see-more-text {
+  opacity: 1;
+  width: auto;
+  margin-left: 6px;
+}
+
+.movie-wrapper{
+  position: relative;
+}
+
+.scroll-button {
+  position: absolute;
+  top: 46%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  border: 1px solid white;
+  transition: 0.15s;
+  cursor: pointer;
+  display: inline-block;
+  opacity: 0;
+}
+
+.scroll-button:hover{
+  background: linear-gradient(90deg, #97dde8, #ffccf2);
+  opacity: 1;
+}
+
+.scroll-button i{
+  color: white;
+  padding: 8px 12px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.scroll-button i:hover{
+  color: white;
+}
+
+.scroll-button.prev{
+  left: 0;
+  z-index: 2;
+}
+
+.scroll-button.next{
+  right: 0;
+  z-index: 2;
+}
+
+.scroll-button.prev1{
+  left: -20px;
+  z-index: 2;
+}
+
+.scroll-button.next1{
+  right: -20px;
+  z-index: 2;
+}

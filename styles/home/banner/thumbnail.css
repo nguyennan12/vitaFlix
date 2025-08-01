@@ -1,0 +1,55 @@
+.banner .carousel-box{
+  position: relative;
+  min-width: 600px;
+  bottom: -240px;
+  right: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rbga(0,0,0,0.2);
+  border-radius: 10px;
+}
+
+.carousel{
+  position: relative;
+  height: 400px;
+  perspective: 1500;
+}
+
+.carousel .carousel-item{
+  width: 200px;
+  cursor: pointer;
+}
+
+.carousel .carousel-item img{
+  max-width: 180px;
+  border-radius: 10px;
+  transform: translateX(12px) translateY(-100px);
+  object-fit: cover;
+  object-position: center;
+}
+
+.carousel .carousel-item img:hover{
+  filter: brightness(0.8);
+}
+
+
+
+.carousel-box button{
+  position: relative;
+  top: -40px;
+  height: 30px;
+  width: 30px;
+  background-color: rgba(196, 194, 194, 0.1);
+  border: none;
+  color: white;
+  font-size: 14px;
+  padding: 6px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.carousel-box button:hover{
+  background-color: rgba(0,0,0,0.1);
+}

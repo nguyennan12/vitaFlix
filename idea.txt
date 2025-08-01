@@ -1,0 +1,18 @@
+ảnh 
+idmb quality year current_epsido
+xem ngay tym
+
+tên việt . tên English đạo diễn
+list thể loại dài ra
+diễ viên 
+ndung phim
+list tập
+
+bình luận chia sẻ thíc
+
+ trái recomend phim phải cmt
+
+ <p><span><i class="fa-solid fa-bars-staggered"></i></span>Phần 1</p>
+                </div>
+                <div>
+                  <p><span><i class="fa-regular fa-closed-captioning"></i></span>Phụ đề</p>

@@ -1,0 +1,208 @@
+.movie-single-box.test,
+.movie-box.test {
+  position: relative;
+  overflow: visible;
+  filter: none;
+  
+}
+
+/* Ẩn priview-box ban đầu */
+.preview-box {
+  position: absolute;
+  left: -96px;
+  z-index: 3;
+  height: 370px;
+  width: 400px;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.5s;
+  pointer-events: none;
+  
+}
+.movie-box.test:hover{
+  transform: none;
+  filter:none;
+}
+/* Khi hover vào movie-box.test thì hiện priview-box lên */
+.movie-single-box.test:hover .preview-box,
+.movie-box.test:hover .preview-box {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+
+}
+
+
+.thumb-preview-box{
+  position: absolute;
+  top:0;
+  height: 200px;
+  width: 100%;
+  z-index: 3;
+}
+
+
+.poster-preview-box{
+  position:absolute;
+  bottom: -105px;
+  left: 20px;
+  height: 180px;
+  width: 120px;
+  z-index: 2;
+  box-shadow: 0 0 8px  rgba(68, 68, 68, 0.7);
+  border: 1px solid rgba(174, 174, 174, 0.6);
+  border-radius: 12px;
+}
+
+.content-preview-box{
+  position: absolute;
+  bottom: 0;
+  height: 170px;
+  width: 100%;
+  background-color: #242528;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.util-preview-1{
+  position: absolute;
+  max-height: 30px;
+  display: flex;
+  max-width: 240px;
+  overflow: hidden;
+  top: 5px;
+  left:160px;
+  z-index: 3;
+}
+
+.util-preview-1 p{
+  font-family: Oswald;
+  padding: 0;
+  margin: 0;
+  color: rgb(224, 224, 224);
+  letter-spacing: 1px;
+  font-size: 17px;
+  font-weight: 400;
+  display: inline-block;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.util-preview-2{
+  position: absolute;
+  max-height: 38px;
+  display: flex;
+  max-width: 240px;
+  top: 32px;
+  left:160px;
+  z-index: 3;
+  background: linear-gradient(90deg, #97dde8, #ffccf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.util-preview-3{
+  position: absolute;
+  height: auto;
+  width: auto;
+  padding: 4px 8px;
+  top: 74px;
+  font-size: 13px;
+  left:155px;
+  background: linear-gradient(90deg, #97dde8, #ffccf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border: 1px solid #97dde8;
+  border-radius: 8px;
+  z-index: 3;
+  margin-right: 1px;
+}
+
+.util-preview-4{
+  position: absolute;
+  height: auto;
+  width: auto;
+  padding: 4px 8px;
+  font-size: 13px;
+  top: 74px;
+  left:210px;
+  background: linear-gradient(90deg, #97dde8, #ffccf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border: 1px solid #97dde8;
+  border-radius: 8px;
+  z-index: 3;
+  margin-right: 14px;
+}
+
+.util-preview-5{
+  position: absolute;
+  height: auto;
+  width: auto;
+  padding: 4px 8px;
+  font-size: 13px;
+  top: 74px;
+  left:270px;
+  background: linear-gradient(90deg, #97dde8, #ffccf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border: 1px solid #97dde8;
+  border-radius: 8px;
+  z-index: 3;
+}
+
+.util-preview-6{
+  position: absolute;
+  height: auto;
+  width: auto;
+  padding: 4px 8px;
+  font-size: 24px;
+  bottom: 12px;
+  left:150px;
+  color: white;
+  border-radius: 8px;
+  z-index: 3;
+}
+
+.util-preview-6:hover{
+  background: linear-gradient(90deg, #97dde8 20%, #ffccf2 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.util-preview-7{
+  position: absolute;
+  height: auto;
+  width: auto;
+  padding: 4px 8px;
+  bottom: 16px;
+  left:20px;
+  background: linear-gradient(90deg, #97dde8, #ffccf2);
+  border: 1px solid #97dde8;
+  border-radius: 8px;
+  z-index: 3;
+}
+
+.util-preview-7 a{
+  color: rgb(46, 45, 52);
+  font-weight: 550;
+  font-size: 14px;
+  padding: 2px 8px;
+}
+
+.util-preview-8{
+  position: absolute;
+  height: auto;
+  width: auto;
+  bottom: 24px;
+  left:200px;
+  background: linear-gradient(90deg, #97dde8 20%, #ffccf2 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: 3;
+}
+
+.util-preview-8 i{
+  margin-left: 5px;
+  font-size: 13px;
+}

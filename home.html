@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#17191d">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VitaFlix</title>
+    <link rel="icon" href="assets/images/VitaFlix.png" type="images/png">
+    <link rel="stylesheet" href="styles/home/main.css">
+    <link rel="stylesheet" href="styles/home/header.css">
+  </head>
+  <body>
+    <header class="home-header">
+      <div class="logo-AnaReel">
+          <img  src="assets/images/VitaFlix.png">
+        <a href="home.html">VitaFlix</a>
+      </div>
+      <ul class="nav">
+        <li>
+          <a><i class="fa-solid fa-house" aria-hidden="true"></i></a>
+        </li>
+        <li><a href="#"> Chủ đề</a></li>
+        <li><a href="#">Thể loại</a></li>
+        <li><a href="#">Phim lẻ</a></li>
+        <li><a href="#">Phim bộ</a></li>
+        <li><a href="#">Quốc gia</a></li>
+        <li><a href="#">Diễn viên</a></li>
+      </ul>
+      <div class="search">
+        <input type="text" placeholder="Search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      </div>
+    </header>
+    <div class="banner js-banner">
+      <div class="content-box js-content-box"></div> 
+      <div class="carousel-box">  
+        <div class="carousel js-carousel"></div>
+      </div>
+      <ul class="sci">
+        <li>
+          <a href="https://www.facebook.com/share/1C3dBYkqY7/" target="_blank"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/nannn1204?igsh=MTdpb3IxMDBuencw" target="_blank"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+        </li>
+        <li>
+          <a href="https://github.com/nguyennan12" target="_blank"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+    </div>
+
+    <main>
+
+
+      <section class="profile-container">
+        <div class="profile-box">
+          <div class="cricle">
+            <img src="assets/images/avatar-nan.jpg">
+          </div>
+          <div class="content-profile">
+            <p>Nguyen An &#183; <span>Nann</span></p>
+            <div>Love faded, peace stayed</div>
+          </div>
+        </div>
+        <div class="movie-continute-container">
+          <div class="title-list-box">
+            <div class="titlle-movie-continute">
+              Xem Tiếp Nào Bạn Êy
+            </div>
+          </div>
+            <div class="list-movie-continute js-movie-list-continute"></div>
+        </div>
+      </section>
+      <section class=" container-movie">
+        <!--List 1-->
+        <div class="title-list">
+          <h2>Hàn Xẻng Nay Có Gì Hot ?</h2>
+          <div class="see-more-button">
+            <i class="fa-solid fa-angle-right"></i>
+            <span class="see-more-text">Xem thêm </span>
+          </div>
+        </div>
+        <div class="movie-wrapper">
+          <div class="scroll-button js-scroll-button prev" data-slug="korea">
+            <i class="fa-solid fa-caret-left"></i>
+          </div>
+          <div class="movie-list js-movie-list-korea"></div>
+          <div class="scroll-button js-scroll-button next" data-slug="korea">
+            <i class="fa-solid fa-caret-right"></i>
+          </div>
+        </div>
+        <!--List 2-->
+        <div class="title-list">
+          <h2>Cập Nhật Hoa Ngữ Hôm Nay</h2>
+          <div class="see-more-button">
+            <i class="fa-solid fa-angle-right"></i>
+            <span class="see-more-text">Xem thêm</span>
+          </div>
+        </div>
+
+        <div class="movie-wrapper">
+          <div class="scroll-button js-scroll-button prev" data-slug="china">
+            <i class="fa-solid fa-caret-left"></i>
+          </div>
+          <div class="movie-list js-movie-list-china"></div>
+          <div class="scroll-button js-scroll-button next" data-slug="china">
+            <i class="fa-solid fa-caret-right"></i>
+          </div>
+        </div>
+        <!--List 3-->
+        <div class="container-movie-single">
+          <div class="content-movie-single">
+            Bom Tấn Cập Cảng!
+          </div>
+          <div>
+            <div class="movie-wrapper">
+              <div class="scroll-button js-scroll-button prev1" data-slug="single-korea">
+                <i class="fa-solid fa-caret-left"></i>
+              </div>
+              <div class="list-movie-single js-movie-list-single-korea"></div>
+              <div class="scroll-button js-scroll-button next1" data-slug="single-korea">
+                <i class="fa-solid fa-caret-right"></i>
+              </div>
+            </div>
+
+            <div class="movie-wrapper">
+              <div class="scroll-button js-scroll-button prev1" data-slug="single-auMy">
+                <i class="fa-solid fa-caret-left"></i>
+              </div>
+              <div class="list-movie-single js-movie-list-single-auMy"></div> 
+              <div class="scroll-button js-scroll-button next1" data-slug="single-auMy">
+                <i class="fa-solid fa-caret-right"></i>
+              </div>
+            </div> 
+          </div> 
+        </div>
+        <!--List 4-->
+        <div class="title-list">
+          <h2>Mới Ra Lò &#45 Anime Nóng Hổi</h2>
+          <div class="see-more-button">
+            <i class="fa-solid fa-angle-right"></i>
+            <span class="see-more-text">Xem thêm</span>
+          </div>
+        </div>
+        <div class="movie-wrapper">
+          <div class="scroll-button js-scroll-button prev" data-slug="japan">
+            <i class="fa-solid fa-caret-left"></i>
+          </div>
+          <div class="movie-list js-movie-list-japan"></div>
+          <div class="scroll-button js-scroll-button next" data-slug="japan">
+            <i class="fa-solid fa-caret-right"></i>
+          </div>
+        </div>
+        <!--List 5-->
+        <div class="title-list">
+          <h2>Không Biết Xem Gì ?</h2>
+          <div class="see-more-button js-reload-button">
+            <i class="fa-solid fa-rotate"></i>
+            <span class="see-more-text">Random </span>
+          </div>
+        </div>
+        <div class="movie-wrapper">
+          <div class="movie-list random js-movie-list-random"></div>
+        </div>
+        <!--End-->
+      </section>
+    </main>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="scripts/home/list.js" type="module"></script>
+    <script src="scripts/home/banner.js" type="module"></script>
+    <script src="scripts/home/button.js" type="module"></script>
+    
+  </body>
+</html>

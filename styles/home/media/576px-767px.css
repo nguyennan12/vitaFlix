@@ -1,0 +1,256 @@
+@media (max-width: 767px) and (min-width: 576px) {
+    .nav,
+    .search {
+      display: none !important;
+    }
+
+    .logo-AnaReel a {
+      font-size: 20px;
+    }
+
+    .logo-AnaReel img {
+      height: 36px;
+    }
+
+    .home-header {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px 16px; /* ✅ giảm padding để không tràn */
+      gap: 10px;
+    }
+
+  .banner {
+    height: 75vh;
+    flex-direction: column;
+    padding: 20px;
+    /* Đảm bảo background image hiển thị tốt */
+    background-size: cover !important;
+    background-position: center !important;
+  }
+  
+  .banner .content {
+    max-width: 280px;
+    margin: 0 auto;
+    text-align: center;
+    transform: scale(0.75);
+    opacity: 0.9;
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.75);
+  }
+  
+  .content-box {
+    margin: 0;
+    position: relative;
+  }
+  
+  .movie-title h2 {
+    font-size: 30px;
+  }
+  
+  .movie-title div {
+    font-size: 12px;
+  }
+  
+  .banner .content p {
+    font-size: 10px;
+    -webkit-line-clamp: 2;
+    margin: 6px 0 12px;
+  }
+  
+  .banner .content .button-display {
+    display: none;
+  }
+  
+  .banner .content .button-info {
+    gap: 6px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .banner .content .button-info div {
+    font-size: 10px;
+    padding: 2px 5px;
+  }
+  
+  .button-genre {
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  
+  .button-genre div {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+  
+  .banner .content .button-play {
+    display: none;
+  }
+  
+  
+  .banner .carousel-box {
+    display: none; /* Ẩn carousel trên mobile */
+  }
+  
+  .sci {
+    bottom: 15px;
+    right: 15px;
+    gap: 12px;
+  }
+  
+  .sci a {
+    font-size: 18px;
+  }
+  
+  .title-list h2 {
+    font-size: 26px;
+    margin-left: 10px;
+  }
+  
+  .movie-list {
+    padding: 6px 10px;
+    gap: 8px;
+    margin: 20px 0;
+  }
+  
+  .movie-box {
+    width: 140px;
+    height: 280px;
+    padding: 8px 0;
+  }
+  
+  .movie-box img {
+    border-radius: 8px;
+  }
+  
+  .content-name-movie p {
+    font-size: 12px;
+  }
+  
+  .container-movie-single {
+    grid-template-columns: 1fr;
+    height: auto;
+    padding: 12px;
+  }
+  
+  .content-movie-single {
+    font-size: 36px;
+    height: auto;
+    margin-bottom: 15px;
+    display:flex;
+  }
+
+  .container-movie-single {
+    display: flex;
+    padding: 20px;
+    height: auto;
+    flex-direction: column;
+  }
+
+  
+  .list-movie-single {
+    height: 300px;
+    margin: 8px 0;
+  }
+  
+  .movie-single-box {
+    height: 280px;
+    max-width: 140px;
+  }
+  
+  .movie-single-box img {
+    height: 250px;
+    border-radius: 10px;
+  }
+  
+  .profile-container {
+    grid-template-columns: 1fr;
+    padding: 20px 10px;
+    margin-top: 30px;
+  }
+  
+  .profile-box {
+    border-radius: 15px;
+    height: auto;
+    padding: 15px 0;
+  }
+  
+  .movie-continute-container {
+    border-radius: 15px;
+    height: auto;
+    padding: 15px;
+  }
+  
+  .cricle {
+    height: 150px;
+    width: 150px;
+    border-radius: 75px;
+  }
+  
+  .cricle img {
+    height: 150px;
+  }
+  
+  .content-profile {
+    width: 150px;
+    height: auto;
+  }
+  
+  .content-profile p {
+    font-size: 14px;
+  }
+  
+  .content-profile span {
+    font-size: 16px;
+  }
+  
+  .titlle-movie-continute {
+    font-size: 24px;
+  }
+  
+  .title-list-box {
+    height: 50px;
+    padding: 0 10px;
+  }
+  
+  .list-movie-continute {
+    height: 250px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .movie-continute-box {
+    width: 130px;
+    height: 220px;
+  }
+  
+  .movie-continute-box img {
+    height: 190px;
+    border-radius: 8px;
+  }
+  
+  .movie-continute-box p {
+    font-size: 11px;
+  }
+  
+  /* Scroll buttons */
+  .scroll-button {
+    display: none; /* Ẩn scroll buttons trên mobile */
+  }
+  
+  .see-more-button {
+    padding: 6px;
+    border-radius: 15px;
+  }
+  
+  .see-more-button:hover {
+    width: 110px;
+  }
+
+  .preview-box {
+    display: none !important;
+  }
+}
