@@ -7,7 +7,7 @@ function renderListMovie(movies, titleList) {
   let listHTML = '';
   const movieLimited = titleList === '.js-movie-list-random'
     ? movies.slice(0, 12)
-    : movies.slice(0, 20)
+    : movies.slice(0, 30)
   movieLimited.forEach((movie) => {
     listHTML += `
       <div class="movie-box test">

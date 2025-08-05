@@ -156,12 +156,12 @@
               <div class="info-viewer-comment">
                 <div class="info-viewer-comment-box">
                   <div class="avatar">
-                    <img src="assets/images/avatar-nan.jpg">
+                    <img id="avatar-viewer-comment" src="assets/images/avatar-nan.jpg">
                   </div>
-                  <p>Nguyen An</p>
+                  <p id="name-viewer-comment">Nguyen An</p>
                 </div>
-                <div class="status-comment">
-                  <p>Ẩn danh<span><i class="fa-solid fa-rotate"></i></span></p>
+                <div class="status-comment js-status-comment">
+                  <p id="privacy-text">Ẩn danh<span><i class="fa-solid fa-rotate"></i></span></p>
                 </div>
                 
                 <div class="text-comment-box">
@@ -230,5 +230,6 @@
     </main>
 
         <script src="scripts/preview/render.js" type="module"></script>
+        <script src="scripts/preview/button.js" type="module"></script>
   </body>
 </html>
