@@ -99,6 +99,7 @@
   color: rgb(252, 137, 6);
   display: flex;
   align-items: center;
+  background-color: rgba(132, 77, 15, 0.5);
   padding: 4px 8px;
   border-radius: 14px;
 }
