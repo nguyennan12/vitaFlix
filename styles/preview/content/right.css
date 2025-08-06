@@ -39,13 +39,17 @@
   max-height: 200px;
   width: 100%;
   border-bottom: 1px solid rgb(75, 75, 75);
+  padding-bottom: 40px;
 }
 
 .genre p{
-  letter-spacing: 1px;
   color: rgb(125, 125, 125);
   font-size: 16px;
   margin-bottom: 10px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .genre span{
