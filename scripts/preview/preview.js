@@ -185,7 +185,17 @@ function renderEpisodeList(movie) {
         });
       }
     });
-  } else if (movie.type === 'series' && movie.episode_total || movie.type === 'hoathinh' && movie.episode_total) {
+  } else if (movie.type === 'single' && movie.episode_total) {
+
+    // Phim lẻ
+    episodeHTML = `
+      <div>
+        <a href="#" data-episode="full">
+          <i class="fa-solid fa-play play"></i>Full
+        </a>
+      </div>
+    `;
+  } else {
     // Fallback: tạo danh sách tập dựa trên episode_total
     const totalEpisodes = parseInt(movie.episode_total) || 12;
     for (let i = 1; i <= totalEpisodes; i++) {
@@ -197,15 +207,6 @@ function renderEpisodeList(movie) {
         </div>
       `;
     }
-  } else {
-    // Phim lẻ
-    episodeHTML = `
-      <div>
-        <a href="#" data-episode="full">
-          <i class="fa-solid fa-play play"></i>Full
-        </a>
-      </div>
-    `;
   }
 
   episodeListContainer.innerHTML = episodeHTML;
