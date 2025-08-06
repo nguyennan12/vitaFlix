@@ -2,6 +2,7 @@ import { catagorMovie, movieListPromise } from "../../data/movie-list.js";
 import { randomFilm } from "./button.js";
 import { randomContinute } from "./utils-content.js";
 import { randomIDMb } from "./utils-content.js";
+
 // 2 đối số là list movie muốn duyệt, và tên list đó
 function renderListMovie(movies, titleList) {
   let listHTML = '';
@@ -33,12 +34,14 @@ function renderListMovie(movies, titleList) {
             </div>
 
             <div class="util-preview-8">
-              <a href="preview.html">Thông tin phim<i class="fa-solid fa-angle-right"></i></a>
+              <a href="preview/${movie.slug}">Thông tin phim<i class="fa-solid fa-angle-right"></i></a>
             </div>
           </div>
         </div>
       
-        <img src="https://phimimg.com/${movie.poster_url}" alt="" class="pposter movie">
+        <a href="preview/${movie.slug}">
+          <img src="https://phimimg.com/${movie.poster_url}" alt="" class="pposter movie">
+        </a>
         <div class="content-name-movie">
           <p>${movie.name}</p>
           <p>${movie.origin_name}</p>
@@ -59,8 +62,9 @@ function renderListMovieSingle(movies, titleList) {
   movieLimited.forEach((movie) => {
     html+= `
       <div class="movie-single-box">
-        
-        <img src="https://phimimg.com/${movie.poster_url}">
+        <a href="preview/${movie.slug}">
+          <img src="https://phimimg.com/${movie.poster_url}">
+        </a>
         <div class="content-name-movie">
           <p>${movie.name}</p>
           <p>${movie.origin_name}</p>
@@ -80,7 +84,9 @@ function renderListMovieContinute(movies, titleList) {
   movieLimited.forEach(movie => {
     html += `
       <div class="movie-continute-box">
-        <img src="https://phimimg.com/${movie.poster_url}">
+        <a href="preview/${movie.slug}">
+          <img src="https://phimimg.com/${movie.poster_url}">
+        </a>
         <p>${randomContinute(movie.type, movie.episode_total)}</p>
       </div>
     `
@@ -94,6 +100,7 @@ function renderListMovieContinute(movies, titleList) {
 
 // Hàm render tất cả
 function renderAllLists() {
+
   renderListMovie(catagorMovie.korea.series, '.js-movie-list-korea');
   renderListMovie(catagorMovie.china.series, '.js-movie-list-china');
   renderListMovie(catagorMovie.japan.anime, '.js-movie-list-japan');

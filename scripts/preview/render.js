@@ -9,7 +9,9 @@ function renderListMovieRecommend(movie, titleList) {
     html += `
       <div class="movie-recommend-box">
         <div class="poster-movie-recommend">
-          <img src="https://phimimg.com/${movie.poster_url}">
+          <a href="../preview/${movie.slug}">
+            <img src="https://phimimg.com/${movie.poster_url}">
+          </a>
         </div>
         <div class="info-movie-recommend">
           <div class="name-movie-recommend">
@@ -17,7 +19,7 @@ function renderListMovieRecommend(movie, titleList) {
             <p>${movie.origin_name}</p>
           </div>
           <div>
-            <a href="preview.html">Thông tin phim<i class="fa-solid fa-angle-right"></i></a>
+            <a href="../preview/${movie.slug}">Thông tin phim<i class="fa-solid fa-angle-right"></i></a>
           </div>
         </div>
       </div>
