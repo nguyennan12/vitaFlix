@@ -1,5 +1,6 @@
 import { extraMovieFetch } from "/data/services/movies-service.js";
 import { catagorMovie, movieListPromise } from "/data/movie-list.js";
+import { randomIDMb } from "../home/utils-content.js";
 
 // Lấy slug từ URL (hỗ trợ cả path và query parameter)
 function getMovieSlugFromURL() {
@@ -71,7 +72,7 @@ async function renderMovieDetail(movie) {
     // Update movie info
     const infoElements = document.querySelectorAll('.info div');
     if (infoElements.length >= 4) {
-      infoElements[0].textContent = 'IMDb 8.9'; // Có thể random hoặc lấy từ API
+      infoElements[0].textContent = `IMDb ${randomIDMb()}`; // Có thể random hoặc lấy từ API
       infoElements[1].textContent = detailedMovie.quality || 'HD';
       infoElements[2].textContent = detailedMovie.year || '2024';
       if(detailedMovie.type === 'single'){
