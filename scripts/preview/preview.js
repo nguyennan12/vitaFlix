@@ -122,8 +122,8 @@ async function renderMovieDetail(movie) {
       const isComplete = detailedMovie.episode_current.includes('Hoàn Tất') || detailedMovie.type === 'single';
       
       statusElement.innerHTML = isComplete 
-        ? '<span class="complete"><i class="fa-solid fa-circle-check"></i></span>hoàn thành'
-        : '<span class="ongoing"><i class="fa-solid fa-clock"></i></span>đang cập nhật';
+        ? '<span ><i class="fa-solid fa-circle-check"></i></span>hoàn thành'
+        : '<span ><i class="fa-solid fa-clock"></i></span>đang cập nhật';
       
       statusElement.className = isComplete ? 'status complete' : 'status ongoing';
     }
