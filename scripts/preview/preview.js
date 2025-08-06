@@ -120,7 +120,7 @@ async function renderMovieDetail(movie) {
     const statusElement = document.querySelector('.status p');
     if (statusElement && detailedMovie.episode_current) {
       const isComplete = detailedMovie.episode_current === detailedMovie.episode_total || 
-                        detailedMovie.episode_current.includes('Full') ||
+                        detailedMovie.episode_current.includes('Hoàn Tất') ||
                         detailedMovie.type === 'single';
       
       statusElement.innerHTML = isComplete 
