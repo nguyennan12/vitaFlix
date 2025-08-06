@@ -1,15 +1,27 @@
-import { extraMovieFetch } from "../../data/services/movies-service.js";
-import { catagorMovie, movieListPromise } from "../../data/movie-list.js";
+import { extraMovieFetch } from "/data/services/movies-service.js";
+import { catagorMovie, movieListPromise } from "/data/movie-list.js";
 
-// Lấy slug từ URL
+// Lấy slug từ URL (hỗ trợ cả path và query parameter)
 function getMovieSlugFromURL() {
+  // Thử lấy từ URL path trước
   const path = window.location.pathname;
   const segments = path.split('/');
-  return segments[segments.length - 1]; // Lấy phần cuối cùng sau dấu /
+  const slugFromPath = segments[segments.length - 1];
+  
+  // Nếu có slug từ path và không phải là file HTML
+  if (slugFromPath && slugFromPath !== 'preview.html' && !slugFromPath.includes('.')) {
+    return slugFromPath;
+  }
+  
+  // Fallback: lấy từ query parameter ?slug=movie-slug
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get('slug');
 }
 
 // Tìm movie từ slug
 async function findMovieBySlug(slug) {
+  if (!slug) return null;
+  
   // Đợi data load xong
   await movieListPromise;
   
@@ -22,15 +34,20 @@ async function findMovieBySlug(slug) {
 async function renderMovieDetail(movie) {
   if (!movie) {
     console.error('Movie not found');
+    // Hiển thị message lỗi cho user
+    showErrorMessage('Không tìm thấy thông tin phim');
     return;
   }
 
   try {
+    console.log('Rendering movie:', movie.name);
+    
     // Fetch thông tin chi tiết
     const detailedMovie = await extraMovieFetch(movie);
     
     if (!detailedMovie) {
       console.error('Could not fetch detailed movie info');
+      showErrorMessage('Không thể tải thông tin chi tiết phim');
       return;
     }
 
@@ -110,9 +127,34 @@ async function renderMovieDetail(movie) {
     // Update episodes list
     renderEpisodeList(detailedMovie);
 
+    // Hide loading message
+    hideErrorMessage();
+
   } catch (error) {
     console.error('Error rendering movie detail:', error);
+    showErrorMessage('Đã xảy ra lỗi khi tải thông tin phim');
   }
+}
+
+// Hiển thị lỗi cho user
+function showErrorMessage(message) {
+  const errorDiv = document.createElement('div');
+  errorDiv.innerHTML = `
+    <div style="text-align: center; padding: 50px; color: #666;">
+      <h2>Oops!</h2>
+      <p>${message}</p>
+      <a href="/" style="color: #007bff; text-decoration: none;">← Về trang chủ</a>
+    </div>
+  `;
+  
+  const main = document.querySelector('main section');
+  if (main) {
+    main.innerHTML = errorDiv.innerHTML;
+  }
+}
+
+function hideErrorMessage() {
+  // Logic để ẩn error message nếu cần
 }
 
 // Render danh sách tập phim
@@ -213,10 +255,11 @@ function getCountryKey(countrySlug) {
 function renderListMovieRecommend(movies) {
   let html = '';
   movies.slice(0, 5).forEach(movie => {
+    const linkPrefix = window.location.pathname.includes('/preview/') ? '' : 'preview/';
     html += `
       <div class="movie-recommend-box">
         <div class="poster-movie-recommend">
-          <a href="../preview/${movie.slug}">
+          <a href="${linkPrefix}${movie.slug}">
             <img src="https://phimimg.com/${movie.poster_url}">
           </a>
         </div>
@@ -226,7 +269,7 @@ function renderListMovieRecommend(movies) {
             <p>${movie.origin_name}</p>
           </div>
           <div>
-            <a href="../preview/${movie.slug}">Thông tin phim<i class="fa-solid fa-angle-right"></i></a>
+            <a href="${linkPrefix}${movie.slug}">Thông tin phim<i class="fa-solid fa-angle-right"></i></a>
           </div>
         </div>
       </div>
@@ -243,25 +286,37 @@ function renderListMovieRecommend(movies) {
 async function initPreviewPage() {
   const slug = getMovieSlugFromURL();
   
+  console.log('=== PREVIEW PAGE DEBUG ===');
+  console.log('Current URL:', window.location.href);
+  console.log('Extracted slug:', slug);
+  console.log('Movie categories loaded:', !!catagorMovie.full);
+  
   if (!slug) {
     console.error('No movie slug found in URL');
+    showErrorMessage('Không tìm thấy mã phim trong URL');
     return;
   }
 
   console.log('Loading movie with slug:', slug);
 
   try {
+    await movieListPromise; // Đợi data load
+    console.log('Total movies available:', catagorMovie.full?.length || 0);
+    
     const movie = await findMovieBySlug(slug);
     
     if (movie) {
+      console.log('Found movie:', movie);
       await renderMovieDetail(movie);
       renderRecommendations(movie);
     } else {
       console.error('Movie not found with slug:', slug);
-      // Có thể redirect về trang chủ hoặc hiển thị 404
+      console.log('Available slugs:', catagorMovie.full?.slice(0, 5).map(m => m.slug));
+      showErrorMessage(`Không tìm thấy phim với mã: ${slug}`);
     }
   } catch (error) {
     console.error('Error initializing preview page:', error);
+    showErrorMessage('Đã xảy ra lỗi khi khởi tạo trang');
   }
 }
 
