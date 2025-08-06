@@ -94,7 +94,7 @@
   border-radius: 14px;
 }
 
-/*.status.ongoing{
+.status.ongoing{
   font-size: 14px;
   color: rgb(252, 137, 6);
   display: flex;
@@ -102,7 +102,7 @@
   background-color: rgba(202, 108, 14, 0.5);
   padding: 4px 8px;
   border-radius: 14px;
-}*/
+}
 
 .title-episode-list span{
   padding-right: 6px;
