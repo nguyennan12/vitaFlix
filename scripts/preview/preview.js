@@ -74,7 +74,12 @@ async function renderMovieDetail(movie) {
       infoElements[0].textContent = 'IMDb 8.9'; // Có thể random hoặc lấy từ API
       infoElements[1].textContent = detailedMovie.quality || 'HD';
       infoElements[2].textContent = detailedMovie.year || '2024';
-      infoElements[3].textContent = `Tập ${detailedMovie.episode_total || 'Full'}`;``
+      if(detailedMovie.type === 'single'){
+        infoElements[3].textContent = 'Full'
+      }else{
+        infoElements[3].textContent = `Tập ${detailedMovie.episode_total}`;
+      }
+      
     }
 
     // Update title
