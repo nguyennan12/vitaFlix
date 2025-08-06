@@ -84,7 +84,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-.status.complite{
+.complete{
   font-size: 14px;
   color: rgb(19, 215, 19);
   display: flex;
@@ -94,7 +94,7 @@
   border-radius: 14px;
 }
 
-.status.ongoing{
+.ongoing{
   font-size: 14px;
   color: rgb(252, 137, 6);
   display: flex;
