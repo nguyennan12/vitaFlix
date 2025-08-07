@@ -241,7 +241,7 @@ window.toggleLike = function(element) {
     icon.classList.remove('fa-regular');
     icon.classList.add('fa-solid');
     countSpan.textContent = currentCount + 1;
-    element.style.color = '#007bff';
+    element.style.color = 'rgb(3, 171, 3)';
   } else {
     icon.classList.remove('fa-solid');
     icon.classList.add('fa-regular');
