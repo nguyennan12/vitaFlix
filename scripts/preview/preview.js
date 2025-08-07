@@ -242,7 +242,7 @@ function renderRecommendations(currentMovie) {
   }
 
   // Render 5 phim đầu tiên
-  renderListMovieRecommend(recommendedMovies.slice(0, 5));
+  renderListMovieRecommend(recommendedMovies.slice(0, 10));
 }
 
 // Helper function để convert country slug
