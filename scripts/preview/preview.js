@@ -1,7 +1,8 @@
 import { extraMovieFetch } from "/data/services/movies-service.js";
 import { catagorMovie, movieListPromise } from "/data/movie-list.js";
 import { randomIDMb } from "../home/utils-content.js";
-import { handleComment } from "./utils.js";
+import { initCommentForMovie } from "./utils.js";
+import { initPrivacySystem } from "./button.js";
 
 // Lấy slug từ URL (hỗ trợ cả path và query parameter)
 function getMovieSlugFromURL() {
@@ -90,7 +91,7 @@ async function renderMovieDetail(movie) {
     if (titleElement) titleElement.textContent = detailedMovie.name;
     if (subtitleElement) subtitleElement.textContent = detailedMovie.origin_name;
 
-    // Update   re info
+    // Update genre info
     const genreElements = document.querySelectorAll('.genre p');
     if (genreElements.length >= 4) {
       // Thể loại
@@ -131,6 +132,9 @@ async function renderMovieDetail(movie) {
 
     // Update episodes list
     renderEpisodeList(detailedMovie);
+
+    // Khởi tạo comment system cho phim này
+    initCommentForMovie(detailedMovie.slug);
 
     // Hide loading message
     hideErrorMessage();
@@ -315,6 +319,9 @@ async function initPreviewPage() {
       console.log('Found movie:', movie);
       await renderMovieDetail(movie);
       renderRecommendations(movie);
+      
+      // Khởi tạo privacy system
+      initPrivacySystem();
     } else {
       console.error('Movie not found with slug:', slug);
       console.log('Available slugs:', catagorMovie.full?.slice(0, 5).map(m => m.slug));
@@ -331,8 +338,6 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initPreviewPage);
 } else {
   initPreviewPage();
-  handleComment();
 }
-
 
 export { initPreviewPage };
