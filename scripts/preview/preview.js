@@ -260,7 +260,7 @@ function getCountryKey(countrySlug) {
 // Render recommended movies trong preview page
 function renderListMovieRecommend(movies) {
   let html = '';
-  movies.slice(0, 5).forEach(movie => {
+  movies.slice(0, 10).forEach(movie => {
     const linkPrefix = window.location.pathname.includes('/preview/') ? '' : 'preview/';
     html += `
       <div class="movie-recommend-box">
