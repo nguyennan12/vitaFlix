@@ -81,7 +81,7 @@ function saveCommentForMovie(movieSlug, comment) {
   
   // Giới hạn số comment tối đa cho mỗi phim (100 comments)
   if (allComments[movieSlug].length > 100) {
-    allComments[movieSlug] = allComments[movieSlug].slice(0, 100);
+    allComments[movieSlug] = allComments[movieSlug].slice(0, 50);
   }
   
   localStorage.setItem('movieComments', JSON.stringify(allComments));
@@ -179,7 +179,7 @@ function renderComments(comments) {
   }
 
   let commentHtml = '';
-  const commentLimited = comments.slice(0, 50); // Hiển thị tối đa 50 comments
+  const commentLimited = comments.slice(0, 10); // Hiển thị tối đa 50 comments
 
   commentLimited.forEach((comment) => {
     // Xử lý dữ liệu cũ (string) và mới (object)
