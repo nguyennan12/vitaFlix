@@ -39,6 +39,10 @@
   max-height: 260px;
   width: 100%;
   border-bottom: 1px solid rgb(75, 75, 75);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
 .genre p{
@@ -48,12 +52,6 @@
   
 }
 
-.genre.content{
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-}
 
 .genre span{
   color: rgb(229, 229, 229);
