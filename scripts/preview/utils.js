@@ -259,7 +259,7 @@ window.toggleDislike = function(element) {
     icon.classList.remove('fa-regular');
     icon.classList.add('fa-solid');
     countSpan.textContent = currentCount + 1;
-    element.style.color = '#dc3545';
+    element.style.color = 'rgb(230, 2, 2)';
   } else {
     icon.classList.remove('fa-solid');
     icon.classList.add('fa-regular');
