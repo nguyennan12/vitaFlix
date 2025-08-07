@@ -37,12 +37,10 @@ function renderCarousel(movies) {
   });
   document.querySelector('.js-carousel')
     .innerHTML = html;
-  const $carousel = document.querySelector('.js-carousel');
-  if ($carousel) {
-    requestAnimationFrame(() => {
-      $('.js-carousel').carousel();
-    });
-  }
+   requestAnimationFrame(() => {
+    const elems = document.querySelectorAll('.js-carousel');
+    M.Carousel.init(elems); // ✅ dùng init
+  });
 }
 
 
