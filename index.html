@@ -168,12 +168,6 @@
       </section>
     </main>
     
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="scripts/home/list.js" type="module"></script>
-    <script src="scripts/home/banner.js" type="module"></script>
-    <script src="scripts/home/button.js" type="module"></script>
-    
     <footer>
       <div class="container-footer">
 
@@ -224,5 +218,31 @@
         </div>
       </div>
     </footer>
+
+    <!-- Trong index.html -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Data và utils trước -->
+    <script src="data/movie-list.js"></script>
+    <script src="scripts/home/utils-content.js"></script>
+
+    <!-- Logic scripts sau -->
+    <script src="scripts/home/button.js"></script>
+    <script src="scripts/home/list.js"></script>
+    <script src="scripts/home/banner.js"></script>
+
+    <!-- Materialize init cuối cùng -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log('DOM loaded, initializing...');
+        
+        // Init Materialize
+        var elems = document.querySelectorAll('.carousel');
+        if (elems.length > 0) {
+            M.Carousel.init(elems);
+        }
+    });
+    </script>
   </body>
 </html>
