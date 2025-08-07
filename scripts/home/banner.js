@@ -37,9 +37,12 @@ function renderCarousel(movies) {
   });
   document.querySelector('.js-carousel')
     .innerHTML = html;
-  requestAnimationFrame(() => {
-    $('.js-carousel').carousel();
-  }); 
+  const $carousel = document.querySelector('.js-carousel');
+  if ($carousel) {
+    requestAnimationFrame(() => {
+      $('.js-carousel').carousel();
+    });
+  }
 }
 
 
