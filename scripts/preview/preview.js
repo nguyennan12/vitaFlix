@@ -1,6 +1,7 @@
 import { extraMovieFetch } from "/data/services/movies-service.js";
 import { catagorMovie, movieListPromise } from "/data/movie-list.js";
 import { randomIDMb } from "../home/utils-content.js";
+import { handleComment } from "./utils.js";
 
 // Lấy slug từ URL (hỗ trợ cả path và query parameter)
 function getMovieSlugFromURL() {
@@ -330,6 +331,7 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initPreviewPage);
 } else {
   initPreviewPage();
+  handleComment();
 }
 
 
