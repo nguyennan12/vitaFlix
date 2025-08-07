@@ -1,17 +1,18 @@
 import { catagorMovie, movieListPromise } from "../../data/movie-list.js";
 import { randomIDMb } from "./utils-content.js";
 
-movieListPromise.then(() => {
-  renderCarousel(catagorMovie.favMovie);
+document.addEventListener("DOMContentLoaded", function () {
+  movieListPromise.then(() => {
+    renderCarousel(catagorMovie.favMovie);
 
-  //restar lại hì trang đầu tiên
-  const firstMovie = catagorMovie.favMovie?.[0];
-  if (firstMovie) {
-    changeBanner(firstMovie);
-  }
-  
-  renderBanner();
-})
+    const firstMovie = catagorMovie.favMovie?.[0];
+    if (firstMovie) {
+      changeBanner(firstMovie);
+    }
+
+    renderBanner();
+  });
+});
 
 function renderBanner() {
   document.querySelectorAll('.js-carousel-item')
