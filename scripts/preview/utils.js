@@ -3,6 +3,8 @@ const textarea = document.querySelector('.js-textarea');
 const sendBtn = document.querySelector('.js-send-button');
 let quanity;
 
+handleComment();
+
 export function handleComment() {
   textarea.addEventListener('input', (e) => {
     let countCharater = e.target.value.length;

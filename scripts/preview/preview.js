@@ -332,7 +332,6 @@ if (document.readyState === 'loading') {
 } else {
   initPreviewPage();
   handleComment();
-  localStorage.clear('saveTextComment');
 }
 
 
