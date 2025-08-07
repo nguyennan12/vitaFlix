@@ -89,7 +89,7 @@ async function renderMovieDetail(movie) {
     if (titleElement) titleElement.textContent = detailedMovie.name;
     if (subtitleElement) subtitleElement.textContent = detailedMovie.origin_name;
 
-    // Update genre info
+    // Update   re info
     const genreElements = document.querySelectorAll('.genre p');
     if (genreElements.length >= 4) {
       // Thể loại
@@ -144,7 +144,7 @@ async function renderMovieDetail(movie) {
 function showErrorMessage(message) {
   const errorDiv = document.createElement('div');
   errorDiv.innerHTML = `
-    <div style="text-align: center; padding: 50px; color: #666;">
+    <div style="text-align: center; padding: 80px; color: #666;">
       <h2>Oops!</h2>
       <p>${message}</p>
       <a href="/" style="color: #007bff; text-decoration: none;">← Về trang chủ</a>

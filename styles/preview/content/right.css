@@ -36,7 +36,7 @@
 
 .genre-right-box{
   padding: 20px 0px;
-  max-height: 240px;
+  max-height: 260px;
   width: 100%;
   border-bottom: 1px solid rgb(75, 75, 75);
 }
@@ -51,7 +51,7 @@
 .genre.content{
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
 }
 
