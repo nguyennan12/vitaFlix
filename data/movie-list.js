@@ -42,30 +42,14 @@ export async function updateMovieCategories() {
     }
 
     catagorMovie.full = fullMovieList;
-    console.log('Full movie list:', catagorMovie.full.length);
 
     catagorMovie.single = await movieFilter.filterByType(fullMovieList, 'single');
-    console.log('All single movies:', catagorMovie.single.length);
     
     // Xử lý favMovie
-    console.log('🎬 Loading favorite movies...');
     catagorMovie.favMovie = await movieFilter.filterFavMovie();
     console.log('Favorite movies loaded:', catagorMovie.favMovie?.length || 0);
-    
-    // Log sample favorite movie
-    if (catagorMovie.favMovie && catagorMovie.favMovie.length > 0) {
-      console.log('Sample favorite movie:', {
-        name: catagorMovie.favMovie[0].name,
-        slug: catagorMovie.favMovie[0].slug,
-        thumb_url: catagorMovie.favMovie[0].thumb_url
-      });
-    }
-    
+  
     catagorMovie.continute = await movieFilter.filterContinuteMovie();
-    console.log('Continue movies:', catagorMovie.continute?.length || 0);
-    
-    console.log('✅ Categories updated successfully');
-    console.log('Final catagorMovie keys:', Object.keys(catagorMovie));
     
     // Trigger re-render nếu có element
     const event = new CustomEvent('moviesUpdated', { detail: catagorMovie });
@@ -79,9 +63,7 @@ export async function updateMovieCategories() {
 
 //moviePromise là biến lưu các phim đang dc tải về sau đó mới sử dụng
 export const movieListPromise = moviePromise.then(async () => {
-  console.log('📽️ Starting movie categories initialization...');
   await updateMovieCategories();
-  console.log('🎉 Movie categories initialization complete');
 }).catch(error => {
   console.error('💥 Movie categories initialization failed:', error);
   throw error;

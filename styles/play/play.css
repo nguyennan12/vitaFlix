@@ -1,0 +1,128 @@
+.play-container{
+  display: flex;
+  flex-direction: column;
+  height:auto;
+  width: 100vw;
+  align-items: center;
+}
+
+.name-film-play{
+  height: 50px;
+  width: auto;
+  margin-top: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 20px;
+  margin-right: auto;
+}
+
+.name-film-play p{
+  background: linear-gradient(90deg, #97dde8, #ffccf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 28px;
+}
+
+.play-box{
+  background-color: black;
+  height: 90vh;
+  width: 98%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  position: relative;
+}
+
+.plyr {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  max-width: none !important;
+}
+
+.plyr__video-wrapper {
+  width: 100% !important;
+ 
+}
+
+.plyr__controls {
+  width: 100% !important;
+  
+}
+
+.bar-play{
+  height: 40px;
+  width: 98%;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.right,
+.left{
+  height: 70%;
+  width: auto;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  gap: 14px;
+}
+
+.like,
+.change-episode,
+.next-episode,
+.prev-episode,
+.cinema,
+.share,
+.repost{
+  font-size: 14px;
+  color: rgb(215, 215, 215);
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.like:hover,
+.change-episode:hover,
+.next-episode:hover,
+.prev-episode:hover,
+.cinema:hover,
+.share:hover,
+.repost:hover{
+  background: linear-gradient(90deg, #97dde8, #ffccf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.like span,
+.prev-episode span,
+.share span,
+.repost span{
+  font-size: 12px;
+  margin-right: 6px;
+}
+
+
+.next-episode span{
+  font-size: 12px;
+  margin-left: 6px;
+}
+
+.cinema span,
+.change-episode span{
+  font-size: 12px;
+  border: 1px solid #97dde8;
+  border-radius: 4px;
+  padding: 2px 4px;
+  background: linear-gradient(90deg, #97dde8, #ffccf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+

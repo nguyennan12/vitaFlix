@@ -1,0 +1,49 @@
+@import url("575px.css");
+@import url("576px-767px.css");
+@import url("768px-991px.css");
+@import url("992px-1100px.css");
+@import url("1200px.css");
+
+/* Desktop/Laptop lớn (1200px+) */
+/* Laptop/Tablet ngang (992px - 1199px) */
+/* iPad/Tablet dọc (768px - 991px) */
+/* Điện thoại lớn/Tablet nhỏ (576px - 767px) */
+/* Điện thoại nhỏ (dưới 576px) */
+
+/* Orientation changes */
+@media (orientation: landscape) and (max-height: 600px) {
+  .banner {
+    height: 100vh;
+  }
+  
+  .banner .content {
+    margin-top: 0;
+  }
+  
+  .movie-title h2 {
+    font-size: 32px;
+  }
+  
+  .banner .carousel-box {
+    bottom: -120px;
+  }
+  
+  .carousel {
+    height: 200px;
+  }
+  
+  .carousel .carousel-item img {
+    max-width: 100px;
+    transform: translateX(5px) translateY(-40px);
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .movie-box img,
+  .movie-single-box img,
+  .movie-continute-box img,
+  .cricle img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}

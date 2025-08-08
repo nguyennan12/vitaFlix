@@ -4,8 +4,258 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VitaFlix</title>
+    <link rel="icon" href="assets/images/VitaFlix.png" type="images/png">
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <link rel="stylesheet" href="styles/play/main.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/play/header.css">
+    <link rel="stylesheet" href="styles/play/general.css">
+
+
   </head>
   <body>
+    <header class="play-header">
+    <div class="logo-AnaReel">
+        <img  src="assets/images/VitaFlix.png">
+      <a href="index.html">VitaFlix</a>
+    </div>
+    <ul class="nav">
+      <li>
+        <a><i class="fa-solid fa-house" aria-hidden="true"></i></a>
+      </li>
+      <li><a href="#"> Chủ đề</a></li>
+      <li><a href="#">Thể loại</a></li>
+      <li><a href="#">Phim lẻ</a></li>
+      <li><a href="#">Phim bộ</a></li>
+      <li><a href="#">Quốc gia</a></li>
+      <li><a href="#">Diễn viên</a></li>
+    </ul>
+    <div class="search">
+      <input type="text" placeholder="Search">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+    </div>
+    </header>
+
+    <main>
+      <section class="play-container">
+        <div class="name-film-play">
+          <p>Hè Rồi Nghỉ Việc Thôi</p>
+        </div>
+        <div class="play-box">
+        
+
+          <video class="video" id="video" playsinline controls ></video>
+
+        </div>
+        <div class="bar-play">
+          <div class="left">
+            <div class="like">
+              <p><span><i class="fa-solid fa-heart" aria-hidden="true"></i></span>Yêu thích</p>
+            </div>
+            <div class="cinema">
+              <p>Rạp phim <span>on</span></p>
+            </div>
+            <div class="change-episode">
+              <p>Chuyển tập <span>on</span></p>
+            </div>
+            <div class="prev-episode">
+              <p><span><i class="fa-solid fa-backward"></i></span>Tập trước</p>
+            </div>
+            <div class="next-episode">
+              <p>Tập sau<span><i class="fa-solid fa-forward"></i></span></p>
+            </div>
+            
+          </div>
+          <div class="right">
+            <div class="share">
+              <p><span><i class="fa-solid fa-share" aria-hidden="true"></i></span>Chia sẻ</p>
+            </div>
+            <div class="repost">
+              <p><span><i class="fa-solid fa-flag"></i></span>Báo lỗi</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+
+      <div class="box-content">
+        <div class="right-box">
+          <div class="title-right-box">
+            <p>Hè Rồi, Nghỉ Việc Thôi </p>
+            <span> Summer Strike</span>
+          </div>
+          <div class="genre-right-box">
+            <div class="genre">
+              <P><span>Thể loại: </span>Lãng mạng &#183; Chính kịch &#183; Tâm lý</P>
+            </div>
+            <div class="genre">
+              <P><span>Quốc gia: </span>Hàn Quốc</P>
+            </div>
+            <div class="genre">
+              <P><span>Diễn viên: </span>Si-wan Yim &#183; Seol-Hyun Kim &#183; Park Ye Young &#183; Kim Jeong-yeong</P>
+            </div>
+            <div class="genre">
+              <P><span>Giới thiệu: </span>Chán nản cuộc sống ở thành phố lớn, một cô gái trẻ đến một thị trấn xa xôi, nơi cô gặp một thủ thư địa phương cũng đang tìm cách trốn thoát.</P>
+            </div>
+          </div>
+          <div class="episode-right-box">
+            <div class="title-episode-list">
+              <div>
+                <p>Danh sách tập</p>
+              </div>
+              <div class="status complite ongoing">
+                <p><span><i class="fa-solid fa-circle-check"></i></span>hoàn thành</p>
+              </div>
+            </div>
+            <div class="list-episode-box">
+              <div class="season-movie">
+                
+                <p><span><i class="fa-solid fa-bars-staggered"></i></span>Phần 1</p>
+              
+                <p><span><i class="fa-regular fa-closed-captioning"></i></span>Phụ đề</p>
+              </div>
+              <div class="episode-list">
+                <div>
+                  <a href="#"><i class="fa-solid fa-play play" aria-hidden="true"></i>Tập 1</a>
+                </div>
+                <div>
+                  <a href="#"><i class="fa-solid fa-play play" aria-hidden="true"></i>Tập 2</a>
+                </div>
+                <div>
+                  <a href="#"><i class="fa-solid fa-play play" aria-hidden="true"></i>Tập 3</a>
+                </div>
+                <div>
+                  <a href="#"><i class="fa-solid fa-play play" aria-hidden="true"></i>Tập 4</a>
+                </div>
+                <div>
+                  <a href="#"><i class="fa-solid fa-play play" aria-hidden="true"></i>Tập 5</a>
+                </div>
+                <div>
+                  <a href="#"><i class="fa-solid fa-play play" aria-hidden="true"></i>Tập 6</a>
+                </div>
+                <div>
+                  <a href="#"><i class="fa-solid fa-play play" aria-hidden="true"></i>Tập 7</a>
+                </div>
+                <div>
+                  <a href="#"><i class="fa-solid fa-play play" aria-hidden="true"></i>Tập 8</a>
+                </div>
+                <div>
+                  <a href="#"><i class="fa-solid fa-play play" aria-hidden="true"></i>Tập 9</a>
+                </div>
+                <div>
+                  <a href="#"><i class="fa-solid fa-play play" aria-hidden="true"></i>Tập 10</a>
+                </div>
+                <div>
+                  <a href="#"><i class="fa-solid fa-play play" aria-hidden="true"></i>Tập 11</a>
+                </div>
+                <div>
+                  <a href="#"><i class="fa-solid fa-play play" aria-hidden="true"></i>Tập 12</a>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box-utils">
+        <div class="comment-container">
+          <div class="title-comment-box">
+            <div class="title-comment">
+              <p><span><i class="fa-solid fa-comment-dots"></i></span>Bình luận</p>
+            </div>
+            <div class="info-viewer-comment">
+              <div class="info-viewer-comment-box">
+                <div class="avatar">
+                  <img id="avatar-viewer-comment" src="/assets/images/avatar-nan.jpg">
+                </div>
+                <p id="name-viewer-comment">Nguyen An</p>
+              </div>
+              <div class="status-comment js-status-comment">
+                <p id="privacy-text">Ẩn danh<span><i class="fa-solid fa-rotate"></i></span></p>
+              </div>
+              
+              <div class="text-comment-box">
+                <div>
+                  <textarea class="js-textarea" placeholder="Viết bình luận"></textarea>
+                  <p><span class="js-quanity-charater-comment">0</span> / 1000</p>
+                </div>
+                <p class="js-send-button">Gửi<span><i class="fa-solid fa-paper-plane"></i></span></p>
+              </div>
+            </div>
+          </div>
+          <div class="show-comment-box">
+            <div class="comment js-comment">
+
+              
+            </div>
+          </div>
+        </div>
+        <div class="recommend-container">
+          <div class="title-recommend">
+            <p>Đề xuất cho bạn</p>
+          </div>
+          <div class="movie-list-recommend js-movie-list-recommend">
+            <div style="text-align: center; padding: 20px; color: #666;">
+              Đang tải đề xuất...
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <footer>
+      <div class="container-footer">
+        <div class="about-me">
+          <div class="logo-name">
+            <div class="logo">
+              <img src="assets/images/VitaFlix.png">
+            </div>
+            <div class="name">
+              <p>VitaFlex</p>
+              <span>nguyenann1204@gmail.com</span>
+            </div>
+          </div>
+
+          <div class="link-mxh">
+            <div>
+              <a href="https://www.facebook.com/share/1C3dBYkqY7/" target="_blank"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            </div>
+            <div>
+              <a href="https://www.instagram.com/nannn1204?igsh=MTdpb3IxMDBuencw" target="_blank"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            </div>
+            <div>
+              <a href="https://www.threads.com/@nannn1204" target="_blank"><i class="fa-brands fa-threads"></i></a>
+            </div>
+            <div>
+              <a href="https://www.tiktok.com/@nguynnnn12?_t=ZS-8yaj1hsCc8P&_r=1" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+            <div>
+              <a href="https://github.com/nguyennan12" target="_blank"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+            </div>
+          </div> 
+
+          <div class="introduce">
+            VitaFlix là website xem phim trực tuyến được phát triển từ dự án cá nhân đầu tiên.Giao diện thân thiện, nội dung cập nhật thủ công, tối ưu cho trải nghiệm người dùng.
+          </div>
+        </div>
+        <div class="service">
+          <h5>Services</h5>
+          <a href="#">Chính sách bảo mật</a>
+          <a href="#">Điều khoảng sử dụng</a>
+          <a href="#">Hỏi đáp</a>
+        </div>
+        
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/plyr@latest"></script>
     
+  
+    <script src="scripts/play/video.js" defer  type="module"></script>
+    <script src="scripts/preview/button.js" type="module"></script>
+    <script src="scripts/play/utils.js" type="module"></script>
   </body>
 </html>

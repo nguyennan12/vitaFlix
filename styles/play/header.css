@@ -1,4 +1,4 @@
-.preview-header {
+.play-header {
   position: absolute;
   top: 0;
   left: 0;
@@ -8,7 +8,7 @@
   align-items: center;
   padding: 10px 30px;
   z-index: 10;
-  
+  background-color: rgba(22, 22, 22, 0.8);
 }
 
 .logo-AnaReel{

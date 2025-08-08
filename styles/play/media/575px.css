@@ -1,0 +1,23 @@
+@media (max-width: 575px) {
+    .nav,
+    .search {
+      display: none !important;
+    }
+
+    .logo-AnaReel a {
+      font-size: 20px;
+    }
+
+    .logo-AnaReel img {
+      height: 36px;
+    }
+
+    .play-header {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px; /* ✅ giảm padding để không tràn */
+      gap: 10px;
+    }
+
+}

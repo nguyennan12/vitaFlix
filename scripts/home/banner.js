@@ -6,12 +6,8 @@ window.catagorMovie = catagorMovie;
 window.movieListPromise = movieListPromise;
 
 document.addEventListener("DOMContentLoaded", function () {
-  console.log('Banner: DOM loaded, waiting for movieListPromise...');
   
   movieListPromise.then(() => {
-    console.log('Banner.js: movieListPromise resolved');
-    console.log('favMovie data:', catagorMovie.favMovie);
-    console.log('All categories keys:', Object.keys(catagorMovie));
     
     // Kiểm tra dữ liệu favMovie
     if (!catagorMovie.favMovie || catagorMovie.favMovie.length === 0) {
@@ -20,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
       // Fallback 1: Sử dụng phim từ Korea series
       if (catagorMovie.korea?.series && catagorMovie.korea.series.length > 0) {
         const fallbackMovies = catagorMovie.korea.series.slice(0, 5);
-        console.log('Using Korea series as fallback:', fallbackMovies.length, 'movies');
         renderCarousel(fallbackMovies);
         changeBanner(fallbackMovies[0]);
       }
@@ -39,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log('Using favMovie data:', catagorMovie.favMovie.length, 'movies');
       renderCarousel(catagorMovie.favMovie);
       const firstMovie = catagorMovie.favMovie[0];
-      console.log('First movie for banner:', firstMovie?.name);
       changeBanner(firstMovie);
     }
 
@@ -176,7 +170,6 @@ function renderGenre(movies) {
 }
 
 function changeBanner (movie) {
-  console.log('changeBanner called with:', movie);
   
   if (!movie) {
     console.error('No movie data provided to changeBanner');
@@ -187,7 +180,6 @@ function changeBanner (movie) {
   
   if (banner) {
     const imageUrl = `https://phimimg.com/${movie.thumb_url}`;
-    console.log('Setting banner background to:', imageUrl);
     
     banner.style.background = `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("${imageUrl}")`;
     banner.style.backgroundSize = 'cover';
