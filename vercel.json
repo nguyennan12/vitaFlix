@@ -5,7 +5,7 @@
       "destination": "/preview.html"
     },
     {
-      "source": "/watch/:slug",
+      "source": "/watch/:slug", 
       "destination": "/watch.html"
     }
   ],
@@ -14,8 +14,26 @@
       "source": "/(.*)",
       "headers": [
         {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).js",
+      "headers": [
+        {
           "key": "Cache-Control",
-          "value": "no-cache"
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).css",
+      "headers": [
+        {
+          "key": "Cache-Control", 
+          "value": "public, max-age=31536000, immutable"
         }
       ]
     },
@@ -23,8 +41,8 @@
       "source": "/(.*).html",
       "headers": [
         {
-          "key": "Cache-Control", 
-          "value": "public, max-age=3600"
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
         }
       ]
     }

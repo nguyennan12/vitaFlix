@@ -35,16 +35,34 @@ function renderCarousel(movies) {
       </div>  
     `
   });
-  document.querySelector('.js-carousel')
-    .innerHTML = html;
-  const $carousel = document.querySelector('.js-carousel');
-  if ($carousel) {
+  
+  const carouselElement = document.querySelector('.js-carousel');
+  if (carouselElement) {
+    carouselElement.innerHTML = html;
+    
+    // Chờ DOM update và kiểm tra element tồn tại
     requestAnimationFrame(() => {
-      $('.js-carousel').carousel();
+      // Kiểm tra jQuery và element có sẵn không
+      if (typeof $ !== 'undefined' && carouselElement.children.length > 0) {
+        try {
+          // Kiểm tra element có clientWidth không
+          if (carouselElement.clientWidth > 0) {
+            $('.js-carousel').carousel();
+          } else {
+            // Chờ thêm một chút nếu element chưa có kích thước
+            setTimeout(() => {
+              if (carouselElement.clientWidth > 0) {
+                $('.js-carousel').carousel();
+              }
+            }, 100);
+          }
+        } catch (error) {
+          console.warn('Carousel initialization failed:', error);
+        }
+      }
     });
   }
 }
-
 
 function renderContent(movies) {
   let html = '';
@@ -80,8 +98,10 @@ function renderContent(movies) {
         </div>
       </div>
     `
-  document.querySelector('.js-content-box')
-    .innerHTML = html;
+  const contentBox = document.querySelector('.js-content-box');
+  if (contentBox) {
+    contentBox.innerHTML = html;
+  }
 }
 
 function renderGenre(movies) {
@@ -90,28 +110,21 @@ function renderGenre(movies) {
   listGenre.forEach((genre) => {
     html += `<div>${genre.name}</div>`
   });
-  document.querySelector('.js-button-genre')
-    .innerHTML = html;
+  const genreElement = document.querySelector('.js-button-genre');
+  if (genreElement) {
+    genreElement.innerHTML = html;
+  }
 }
 
 function changeBanner (movie) {
-
   const banner = document.querySelector('.js-banner');
   
-  banner.style.background = `url("https://phimimg.com/${movie.thumb_url}")`;
-  banner.style.backgroundSize = 'cover';
-  banner.style.backgroundPosition = 'center'
+  if (banner) {
+    banner.style.background = `url("https://phimimg.com/${movie.thumb_url}")`;
+    banner.style.backgroundSize = 'cover';
+    banner.style.backgroundPosition = 'center'
+  }
 
   renderContent(movie);
-
   renderGenre(movie);
-
-  /*
-  contents.forEach((content) => {
-    content.classList.remove('active');
-    if(content.classList.contains(title)){
-      content.classList.add('active');
-    }
-  });
-  */
 }
