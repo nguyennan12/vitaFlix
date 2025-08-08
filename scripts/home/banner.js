@@ -1,18 +1,77 @@
 import { catagorMovie, movieListPromise } from "../../data/movie-list.js";
 import { randomIDMb } from "./utils-content.js";
 
-document.addEventListener("DOMContentLoaded", function () {
-  movieListPromise.then(() => {
-    renderCarousel(catagorMovie.favMovie);
+// Expose to global for debugging
+window.catagorMovie = catagorMovie;
+window.movieListPromise = movieListPromise;
 
-    const firstMovie = catagorMovie.favMovie?.[0];
-    if (firstMovie) {
+document.addEventListener("DOMContentLoaded", function () {
+  console.log('Banner: DOM loaded, waiting for movieListPromise...');
+  
+  movieListPromise.then(() => {
+    console.log('Banner.js: movieListPromise resolved');
+    console.log('favMovie data:', catagorMovie.favMovie);
+    console.log('All categories keys:', Object.keys(catagorMovie));
+    
+    // Kiểm tra dữ liệu favMovie
+    if (!catagorMovie.favMovie || catagorMovie.favMovie.length === 0) {
+      console.error('No favMovie data found, using fallback');
+      
+      // Fallback 1: Sử dụng phim từ Korea series
+      if (catagorMovie.korea?.series && catagorMovie.korea.series.length > 0) {
+        const fallbackMovies = catagorMovie.korea.series.slice(0, 5);
+        console.log('Using Korea series as fallback:', fallbackMovies.length, 'movies');
+        renderCarousel(fallbackMovies);
+        changeBanner(fallbackMovies[0]);
+      }
+      // Fallback 2: Sử dụng từ full list
+      else if (catagorMovie.full && catagorMovie.full.length > 0) {
+        const fallbackMovies = catagorMovie.full.slice(0, 5);
+        console.log('Using full list as fallback:', fallbackMovies.length, 'movies');
+        renderCarousel(fallbackMovies);
+        changeBanner(fallbackMovies[0]);
+      } else {
+        console.error('No movie data available at all!');
+        showBannerError();
+        return;
+      }
+    } else {
+      console.log('Using favMovie data:', catagorMovie.favMovie.length, 'movies');
+      renderCarousel(catagorMovie.favMovie);
+      const firstMovie = catagorMovie.favMovie[0];
+      console.log('First movie for banner:', firstMovie?.name);
       changeBanner(firstMovie);
     }
 
     renderBanner();
+  }).catch(error => {
+    console.error('Error in banner initialization:', error);
+    showBannerError();
   });
 });
+
+// Hiển thị lỗi banner
+function showBannerError() {
+  const banner = document.querySelector('.js-banner');
+  const contentBox = document.querySelector('.js-content-box');
+  
+  if (banner) {
+    banner.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+    banner.style.minHeight = '500px';
+  }
+  
+  if (contentBox) {
+    contentBox.innerHTML = `
+      <div class="content active js-content">
+        <div class="movie-title">
+          <h2>VitaFlix</h2>
+          <div>Đang tải dữ liệu phim...</div>
+        </div>
+        <p>Vui lòng chờ trong giây lát...</p>
+      </div>
+    `;
+  }
+}
 
 function renderBanner() {
   document.querySelectorAll('.js-carousel-item')
@@ -117,12 +176,25 @@ function renderGenre(movies) {
 }
 
 function changeBanner (movie) {
+  console.log('changeBanner called with:', movie);
+  
+  if (!movie) {
+    console.error('No movie data provided to changeBanner');
+    return;
+  }
+
   const banner = document.querySelector('.js-banner');
   
   if (banner) {
-    banner.style.background = `url("https://phimimg.com/${movie.thumb_url}")`;
+    const imageUrl = `https://phimimg.com/${movie.thumb_url}`;
+    console.log('Setting banner background to:', imageUrl);
+    
+    banner.style.background = `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("${imageUrl}")`;
     banner.style.backgroundSize = 'cover';
-    banner.style.backgroundPosition = 'center'
+    banner.style.backgroundPosition = 'center';
+    banner.style.backgroundRepeat = 'no-repeat';
+  } else {
+    console.error('Banner element not found');
   }
 
   renderContent(movie);
