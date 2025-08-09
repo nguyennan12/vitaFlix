@@ -12,29 +12,26 @@ document.addEventListener("DOMContentLoaded", function () {
     // Kiểm tra dữ liệu favMovie
     if (!catagorMovie.favMovie || catagorMovie.favMovie.length === 0) {
       console.error('No favMovie data found, using fallback');
-      
-      // Fallback 1: Sử dụng phim từ Korea series
-      if (catagorMovie.korea?.series && catagorMovie.korea.series.length > 0) {
-        const fallbackMovies = catagorMovie.korea.series.slice(0, 5);
-        renderCarousel(fallbackMovies);
-        changeBanner(fallbackMovies[0]);
-      }
-      // Fallback 2: Sử dụng từ full list
-      else if (catagorMovie.full && catagorMovie.full.length > 0) {
-        const fallbackMovies = catagorMovie.full.slice(0, 5);
-        console.log('Using full list as fallback:', fallbackMovies.length, 'movies');
-        renderCarousel(fallbackMovies);
-        changeBanner(fallbackMovies[0]);
-      } else {
-        console.error('No movie data available at all!');
-        showBannerError();
-        return;
-      }
+      useFallbackMovies();
     } else {
       console.log('Using favMovie data:', catagorMovie.favMovie.length, 'movies');
-      renderCarousel(catagorMovie.favMovie);
-      const firstMovie = catagorMovie.favMovie[0];
-      changeBanner(firstMovie);
+      
+      // Kiểm tra và filter các movie có đủ data
+      const validFavMovies = catagorMovie.favMovie.filter(movie => {
+        const isValid = movie && movie.name && movie.category && Array.isArray(movie.category);
+        if (!isValid) {
+          console.warn('Invalid movie data:', movie?.name || 'unnamed movie');
+        }
+        return isValid;
+      });
+
+      if (validFavMovies.length > 0) {
+        renderCarousel(validFavMovies);
+        changeBanner(validFavMovies[0]);
+      } else {
+        console.error('No valid favMovie data found, using fallback');
+        useFallbackMovies();
+      }
     }
 
     renderBanner();
@@ -43,6 +40,27 @@ document.addEventListener("DOMContentLoaded", function () {
     showBannerError();
   });
 });
+
+// Function để sử dụng fallback movies
+function useFallbackMovies() {
+  // Fallback 1: Sử dụng phim từ Korea series
+  if (catagorMovie.korea?.series && catagorMovie.korea.series.length > 0) {
+    const fallbackMovies = catagorMovie.korea.series.slice(0, 5);
+    renderCarousel(fallbackMovies);
+    changeBanner(fallbackMovies[0]);
+  }
+  // Fallback 2: Sử dụng từ full list
+  else if (catagorMovie.full && catagorMovie.full.length > 0) {
+    const fallbackMovies = catagorMovie.full.slice(0, 5);
+    console.log('Using full list as fallback:', fallbackMovies.length, 'movies');
+    renderCarousel(fallbackMovies);
+    changeBanner(fallbackMovies[0]);
+  } else {
+    console.error('No movie data available at all!');
+    showBannerError();
+    return;
+  }
+}
 
 // Hiển thị lỗi banner
 function showBannerError() {
@@ -122,8 +140,8 @@ function renderContent(movies) {
     html += `
       <div class="content active js-content">
         <div class="movie-title">
-          <h2>${movies.name}</h2>
-          <div>${movies.origin_name}</div>
+          <h2>${movies.name || 'Tên phim không xác định'}</h2>
+          <div>${movies.origin_name || ''}</div>
         </div>
         
         <div class="button-info">
@@ -131,15 +149,15 @@ function renderContent(movies) {
             IMDb ${randomIDMb()}
           </div>
           <div class="movie-quality">
-            ${movies.quality}
+            ${movies.quality || 'HD'}
           </div>
-          <div class="movie-year">${movies.year}</div>
-          <div class="movie-duration">Tập ${movies.episode_total}</div>
+          <div class="movie-year">${movies.year || 'N/A'}</div>
+          <div class="movie-duration">Tập ${movies.episode_total || movies.episode_current || 'N/A'}</div>
         </div>
         <div class="button-genre js-button-genre">
             
         </div>
-        <p>${movies.content}</p>
+        <p>${movies.content || 'Đang cập nhật nội dung...'}</p>
         <div class="button-display">
           <button class="button-play">
               <a href="#"><i class="fa-solid fa-play play" aria-hidden="true"></i></a>
@@ -159,10 +177,20 @@ function renderContent(movies) {
 
 function renderGenre(movies) {
   let html = '';
-  const listGenre = movies.category.slice(0, 4);
-  listGenre.forEach((genre) => {
-    html += `<div>${genre.name}</div>`
-  });
+  
+  // Kiểm tra xem movies.category có tồn tại và là array không
+  if (movies.category && Array.isArray(movies.category) && movies.category.length > 0) {
+    const listGenre = movies.category.slice(0, 4);
+    listGenre.forEach((genre) => {
+      if (genre && genre.name) {
+        html += `<div>${genre.name}</div>`;
+      }
+    });
+  } else {
+    // Fallback genres nếu không có category
+    html = '<div>Phim hay</div><div>Đáng xem</div>';
+  }
+  
   const genreElement = document.querySelector('.js-button-genre');
   if (genreElement) {
     genreElement.innerHTML = html;
